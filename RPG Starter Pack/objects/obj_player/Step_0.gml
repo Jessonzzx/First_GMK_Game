@@ -8,6 +8,8 @@ if (_hor != 0 or _ver != 0){
         else if (_hor < 0) sprite_index = spr_player_walk_left
             else if (_ver > 0) sprite_index = spr_player_walk_down
                 else if (_ver < 0) sprite_index = spr_player_walk_up
+                    
+    facing = point_direction(0, 0, _hor, _ver);
 }
 else{
     if (sprite_index = spr_player_walk_right) sprite_index = spr_player_idle_right;
@@ -16,3 +18,8 @@ else{
                 else if (sprite_index = spr_player_walk_up) sprite_index = spr_player_idle_up
 }
 
+if (keyboard_check(vk_space)){
+    var _inst = instance_create_depth(x, y, depth, obj_attack);
+    _inst.image_angle = facing;
+    _inst.damage *= damage;
+}
